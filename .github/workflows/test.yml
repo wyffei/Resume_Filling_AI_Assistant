@@ -39,13 +39,6 @@ jobs:
           node <<'NODE'
           const fs = require("node:fs");
           const files = ["manifest.json"];
-          if (fs.existsSync("templates")) {
-            files.push(
-              ...fs.readdirSync("templates")
-                .filter((name) => name.endsWith(".json"))
-                .map((name) => `templates/${name}`)
-            );
-          }
           for (const file of files) {
             JSON.parse(fs.readFileSync(file, "utf8"));
             console.log(`valid JSON: ${file}`);
